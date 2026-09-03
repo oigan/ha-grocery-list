@@ -85,7 +85,13 @@ class AuchanCoordinator(DataUpdateCoordinator):
         )
 
     async def _async_update_data(self) -> dict[str, Any]:
-        """Fetch updated prices and availability for all watched items."""
+        """Refresh price and availability for every item in every list.
+
+        The watch flags decide which changes raise an event, not which items
+        get refreshed: an unwatched item still has to show a truthful price
+        and stock state. One simulation covers a whole list, so scanning every
+        item costs the same number of requests as scanning only watched ones.
+        """
         lists = self._storage.get_all_lists()
         results: dict[str, Any] = {}
         attempted = 0
@@ -93,13 +99,13 @@ class AuchanCoordinator(DataUpdateCoordinator):
         errors: list[str] = []
 
         for grocery_list in lists:
-            watched = grocery_list.watched_items
-            if not watched:
+            items = grocery_list.items
+            if not items:
                 continue
             attempted += 1
 
             try:
-                result = await self._scan_list(grocery_list, watched)
+                result = await self._scan_list(grocery_list, items)
                 if result:
                     results[grocery_list.id] = result
                     succeeded += 1
@@ -216,9 +222,9 @@ class AuchanCoordinator(DataUpdateCoordinator):
         return summary
 
     async def _scan_list(
-        self, grocery_list: GroceryList, watched: list[GroceryItem]
+        self, grocery_list: GroceryList, items: list[GroceryItem]
     ) -> dict[str, Any] | None:
-        """Simulate one list and detect changes."""
+        """Simulate one list, persist fresh data, and detect changes."""
         # Get active address for coordinates and postal code
         addr = self._storage.get_active_address()
         lat = addr.latitude if addr else self._latitude
@@ -233,7 +239,7 @@ class AuchanCoordinator(DataUpdateCoordinator):
                 "quantity": item.quantity,
                 "seller": item.seller_id or fallback_seller,
             }
-            for item in watched
+            for item in items
         ]
 
         # Use the list's dedicated orderForm if available and not expired
@@ -259,23 +265,23 @@ class AuchanCoordinator(DataUpdateCoordinator):
             )
 
         if not simulation:
-            _LOGGER.warning("Simulation returned no data for a watched list")
+            _LOGGER.warning("Simulation returned no data for a list")
             return None
 
         # Detect changes and build price update payload
         changes: list[dict[str, Any]] = []
         price_updates: dict[str, dict[str, Any]] = {}
 
-        for item in watched:
+        for item in items:
             new_price = simulation.item_prices.get(item.sku_id)
             new_avail = simulation.item_availability.get(item.sku_id)
 
             update: dict[str, Any] = {}
 
-            # Price monitoring
-            if new_price is not None and item.watch_price:
+            # Price: always stored, but only a watched item raises an event.
+            if new_price is not None:
                 old_price = item.current_price
-                if old_price > 0 and new_price < old_price:
+                if item.watch_price and old_price > 0 and new_price < old_price:
                     drop_pct = (old_price - new_price) / old_price * 100
                     threshold = (
                         item.price_drop_threshold_pct
@@ -299,11 +305,12 @@ class AuchanCoordinator(DataUpdateCoordinator):
 
                 update["current_price"] = new_price
 
-            # Stock monitoring
-            if new_avail is not None and item.watch_stock:
+            # Stock: always stored, but only a watched item raises an event.
+            if new_avail is not None:
                 old_avail = item.availability
                 if (
-                    old_avail != AVAILABILITY_AVAILABLE
+                    item.watch_stock
+                    and old_avail != AVAILABILITY_AVAILABLE
                     and new_avail == AVAILABILITY_AVAILABLE
                 ):
                     changes.append(
@@ -316,7 +323,8 @@ class AuchanCoordinator(DataUpdateCoordinator):
                     self._fire_back_in_stock(item, grocery_list)
 
                 elif (
-                    old_avail == AVAILABILITY_AVAILABLE
+                    item.watch_stock
+                    and old_avail == AVAILABILITY_AVAILABLE
                     and new_avail != AVAILABILITY_AVAILABLE
                 ):
                     changes.append(
