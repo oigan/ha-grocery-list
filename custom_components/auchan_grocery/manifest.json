@@ -1,7 +1,7 @@
 {
   "domain": "auchan_grocery",
   "name": "Auchan Grocery List",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "documentation": "https://github.com/oigan/ha-grocery-list",
   "issue_tracker": "https://github.com/oigan/ha-grocery-list/issues",
   "dependencies": [],

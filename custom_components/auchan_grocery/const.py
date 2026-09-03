@@ -4,7 +4,7 @@ from datetime import timedelta
 
 DOMAIN = "auchan_grocery"
 NAME = "Auchan Grocery"
-VERSION = "0.4.1"
+VERSION = "0.4.2"
 
 # Sent by every outgoing client; derived so a version bump is one edit.
 USER_AGENT = f"ha-auchan-grocery/{VERSION}"
