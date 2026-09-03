@@ -1,0 +1,49 @@
+{
+  "title": "Auchan Grocery List",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Auchan Grocery setup",
+        "description": "Configure monitoring. Addresses are managed later from the Auchan Grocery panel.",
+        "data": {
+          "email": "Email (optional)",
+          "scan_interval_minutes": "Price update interval",
+          "price_drop_threshold_pct": "Price-drop alert threshold (%)",
+          "chef_bridge_url": "Chef AI bridge URL",
+          "chef_bridge_token": "Chef AI bridge token"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "The integration is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Update settings",
+        "data": {
+          "email": "Email (optional)",
+          "scan_interval_minutes": "Price update interval",
+          "price_drop_threshold_pct": "Price-drop alert threshold (%)"
+        }
+      }
+    }
+  },
+  "selector": {
+    "scan_interval": {
+      "options": {
+        "30": "30 minutes",
+        "60": "1 hour",
+        "360": "6 hours",
+        "720": "12 hours"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "product_price": { "name": "Price" },
+      "product_availability": { "name": "Availability" }
+    }
+  }
+}

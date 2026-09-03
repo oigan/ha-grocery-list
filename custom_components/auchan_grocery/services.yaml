@@ -1,0 +1,226 @@
+create_list:
+  name: Creează Listă
+  description: Creează o nouă listă de cumpărături Auchan.
+  fields:
+    name:
+      name: Nume
+      description: Numele listei (ex. "Cumpărături Săptămână").
+      required: true
+      selector:
+        text:
+    list_id:
+      name: ID Listă
+      description: ID unic opțional (generat automat dacă nu e specificat).
+      required: false
+      selector:
+        text:
+
+delete_list:
+  name: Șterge Listă
+  description: Șterge o listă de cumpărături existentă.
+  fields:
+    list_id:
+      name: ID Listă
+      description: ID-ul listei de șters.
+      required: true
+      selector:
+        text:
+
+rename_list:
+  name: Redenumește Listă
+  description: Redenumește o listă existentă.
+  fields:
+    list_id:
+      name: ID Listă
+      required: true
+      selector:
+        text:
+    name:
+      name: Nume nou
+      required: true
+      selector:
+        text:
+
+set_active_list:
+  name: Selectează lista activă
+  description: Salvează lista utilizată implicit în panoul Auchan Grocery.
+  fields:
+    list_id:
+      name: ID Listă
+      required: true
+      selector:
+        text:
+
+add_item:
+  name: Adaugă Produs
+  description: Adaugă un produs (prin SKU) în lista specificată.
+  fields:
+    list_id:
+      name: ID Listă
+      required: true
+      selector:
+        text:
+    sku_id:
+      name: SKU ID
+      required: true
+      selector:
+        text:
+    product_id:
+      name: Product ID
+      required: true
+      selector:
+        text:
+    name:
+      name: Nume produs
+      required: true
+      selector:
+        text:
+    brand:
+      name: Brand
+      required: false
+      selector:
+        text:
+    seller_id:
+      name: Seller ID
+      description: Seller-ul VTEX asociat ofertei selectate.
+      required: false
+      selector:
+        text:
+    quantity:
+      name: Cantitate
+      required: false
+      default: 1
+      selector:
+        number:
+          min: 1
+          max: 99
+          mode: box
+    price:
+      name: Preț curent (RON)
+      required: false
+      default: 0
+      selector:
+        number:
+          min: 0
+          max: 99999
+          step: 0.01
+    watch_price:
+      name: Monitorizare preț
+      required: false
+      default: false
+      selector:
+        boolean:
+    watch_stock:
+      name: Monitorizare stoc
+      required: false
+      default: false
+      selector:
+        boolean:
+
+remove_item:
+  name: Elimină Produs
+  description: Elimină un produs din lista specificată.
+  fields:
+    list_id:
+      name: ID Listă
+      required: true
+      selector:
+        text:
+    sku_id:
+      name: SKU ID
+      required: true
+      selector:
+        text:
+
+set_item_quantity:
+  name: Setează Cantitate
+  description: Setează cantitatea unui produs. 0 elimină produsul.
+  fields:
+    list_id:
+      name: ID Listă
+      required: true
+      selector:
+        text:
+    sku_id:
+      name: SKU ID
+      required: true
+      selector:
+        text:
+    quantity:
+      name: Cantitate
+      required: true
+      selector:
+        number:
+          min: 0
+          max: 99
+          mode: box
+
+toggle_in_cart:
+  name: Bifează/Debifează în Coș
+  description: Comută includerea unui produs în link-ul de coș generat.
+  fields:
+    list_id:
+      name: ID Listă
+      required: true
+      selector:
+        text:
+    sku_id:
+      name: SKU ID
+      required: true
+      selector:
+        text:
+
+toggle_watch:
+  name: Activează/Dezactivează Monitorizare
+  description: Comută monitorizarea prețului și stocului pentru un produs.
+  fields:
+    list_id:
+      name: ID Listă
+      required: true
+      selector:
+        text:
+    sku_id:
+      name: SKU ID
+      required: true
+      selector:
+        text:
+
+search_and_add:
+  name: Caută și Adaugă
+  description: Caută un produs pe Auchan.ro și îl adaugă automat în lista specificată.
+  fields:
+    list_id:
+      name: ID Listă
+      required: true
+      selector:
+        text:
+    query:
+      name: Termen de căutare
+      required: true
+      selector:
+        text:
+    quantity:
+      name: Cantitate
+      required: false
+      default: 1
+      selector:
+        number:
+          min: 1
+          max: 99
+          mode: box
+    auto_add_first:
+      name: Adaugă primul rezultat automat
+      required: false
+      default: true
+      selector:
+        boolean:
+
+export_list:
+  name: Exportă Listă
+  description: Exportă conținutul listei ca JSON printr-o notificare Home Assistant.
+  fields:
+    list_id:
+      name: ID Listă
+      required: true
+      selector:
+        text:

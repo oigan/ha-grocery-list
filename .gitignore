@@ -1,0 +1,53 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Test artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+*.xml
+
+# HA local testing
+.storage/
+*.log
+auchan_grocery.grocery_lists.json
+
+# Node (if any)
+node_modules/
+
+# macOS
+.DS_Store
+Thumbs.db
+
+# iviBrainKit (auto-generated — do not push agent files)
+.agent/
+.agents/
+.agent.bak/
+.claude/
+.kiro/
+.github/agents/
+.github/prompts/
+.github/instructions/
+.github/copilot-instructions.md
+GEMINI.md
+AGENTS.md
+skills-lock.json
+
+# Local one-off migration/debug helpers
+backfill_urls.py
+fix_panel.py
+patch_auchan_panel.py
+test_orderform.py

@@ -1,0 +1,49 @@
+{
+  "title": "Lista de cumpărături Auchan",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Configurare Auchan Grocery",
+        "description": "Configurează monitorizarea. Adresele se gestionează ulterior din panoul Auchan Grocery.",
+        "data": {
+          "email": "Email (opțional)",
+          "scan_interval_minutes": "Interval actualizare prețuri",
+          "price_drop_threshold_pct": "Prag alertă reducere preț (%)",
+          "chef_bridge_url": "Adresa serviciului Chef AI",
+          "chef_bridge_token": "Tokenul privat Chef AI"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Integrarea este deja configurată."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Modifică setările",
+        "data": {
+          "email": "Email (opțional)",
+          "scan_interval_minutes": "Interval actualizare prețuri",
+          "price_drop_threshold_pct": "Prag alertă reducere preț (%)"
+        }
+      }
+    }
+  },
+  "selector": {
+    "scan_interval": {
+      "options": {
+        "30": "30 minute",
+        "60": "1 oră",
+        "360": "6 ore",
+        "720": "12 ore"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "product_price": { "name": "Preț" },
+      "product_availability": { "name": "Disponibilitate" }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+* text=auto
+
+# Generated/minified bundles may contain literal whitespace inside regular expressions.
+custom_components/auchan_grocery/frontend/auchan-panel.js -whitespace
+custom_components/auchan_grocery/frontend/vendor/** -whitespace

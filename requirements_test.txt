@@ -1,0 +1,7 @@
+pytest>=7.4.0
+pytest-asyncio>=0.23.0
+aiohttp>=3.9.0
+beautifulsoup4>=4.12.0
+python-slugify>=8.0.0
+# A full Home Assistant runtime is not needed for isolated unit tests.
+# The live integration is verified with Home Assistant's check_config command.

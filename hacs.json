@@ -1,0 +1,7 @@
+{
+  "name": "Auchan Grocery List",
+  "description": "Home Assistant integration for Auchan.ro grocery list management with price monitoring and notifications",
+  "render_readme": true,
+  "homeassistant": "2025.1.0",
+  "country": ["RO"]
+}

@@ -1,0 +1,16 @@
+{
+  "domain": "auchan_grocery",
+  "name": "Auchan Grocery List",
+  "version": "0.3.1",
+  "documentation": "https://github.com/oigan/ha-grocery-list",
+  "issue_tracker": "https://github.com/oigan/ha-grocery-list/issues",
+  "dependencies": [],
+  "codeowners": ["@eugeniviteb"],
+  "requirements": [
+    "beautifulsoup4>=4.12.0",
+    "python-slugify>=8.0.0"
+  ],
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "config_flow": true
+}

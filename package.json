@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "build": "node scripts/build-frontend.mjs",
+    "check:js": "node --check www/auchan-grocery/auchan-panel.js"
+  },
+  "dependencies": {
+    "@fontsource/barlow-condensed": "^5.2.6",
+    "@fontsource/source-sans-3": "^5.2.6",
+    "leaflet": "^1.9.4",
+    "lit": "^2.8.0",
+    "qrcodejs": "^1.0.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.9"
+  }
+}
