@@ -63,20 +63,12 @@ for (const [dependency, filename] of [
   ["leaflet", "leaflet-LICENSE"],
   ["qrcodejs", "qrcodejs-LICENSE"],
   ["@fontsource/source-sans-3", "source-sans-3-OFL"],
-  ["@fontsource/barlow-condensed", "barlow-condensed-OFL"],
 ]) {
   await copyTextNormalized(
     resolve(root, "node_modules", dependency, "LICENSE"),
     resolve(licenses, filename)
   );
 }
-await cp(
-  resolve(
-    root,
-    "node_modules/@fontsource/barlow-condensed/files/barlow-condensed-latin-ext-700-normal.woff2"
-  ),
-  resolve(fonts, "barlow-condensed-700.woff2")
-);
 for (const weight of [400, 600, 700]) {
   await cp(
     resolve(
