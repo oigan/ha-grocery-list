@@ -1,0 +1,31 @@
+name: Auchan Chef Bridge
+version: "0.1.0"
+slug: auchan_chef_bridge
+description: Companion service for the Chef AI tab of the Auchan Grocery List integration.
+url: https://github.com/oigan/ha-grocery-list
+arch:
+  - amd64
+  - aarch64
+init: false
+startup: services
+boot: auto
+
+# Leave every option blank on a first install. The bridge generates a token, stores it
+# in /data so it survives restarts and updates, and prints it in this add-on's log with
+# instructions for pasting it into the integration.
+options:
+  bridge_token: ""
+  codex_model: ""
+  request_timeout_ms: 180000
+schema:
+  bridge_token: "password?"
+  codex_model: "str?"
+  request_timeout_ms: "int(10000,600000)"
+
+# Declared so the port can be published for debugging, but mapped to nothing by default:
+# Home Assistant reaches the bridge by add-on hostname on the internal Docker network,
+# and this service holds a live ChatGPT session, so it should not be exposed.
+ports:
+  8787/tcp: null
+ports_description:
+  8787/tcp: Chef bridge API. Leave closed unless you are debugging from another host.

@@ -1,0 +1,7 @@
+# Makes this repository usable as a Home Assistant add-on repository, in addition to
+# being a HACS integration repository. The two do not collide: HACS reads hacs.json and
+# custom_components/, while Supervisor scans top-level folders for a config.yaml and so
+# finds only bridge/.
+name: Auchan Grocery List
+url: https://github.com/oigan/ha-grocery-list
+maintainer: oigan
