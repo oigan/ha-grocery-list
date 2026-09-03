@@ -4,7 +4,7 @@ from datetime import timedelta
 
 DOMAIN = "auchan_grocery"
 NAME = "Auchan Grocery"
-VERSION = "0.3.1"
+VERSION = "0.4.0"
 
 # ── VTEX / Auchan endpoints ───────────────────────────────────────────────────
 AUCHAN_BASE_URL = "https://www.auchan.ro"
@@ -48,7 +48,7 @@ DEFAULT_SALES_CHANNEL = "1"
 NOMINATIM_BASE_URL = "https://nominatim.openstreetmap.org"
 NOMINATIM_SEARCH_ENDPOINT = "/search"
 NOMINATIM_REVERSE_ENDPOINT = "/reverse"
-NOMINATIM_USER_AGENT = "ha-auchan-grocery/0.3.1"
+NOMINATIM_USER_AGENT = "ha-auchan-grocery/0.4.0"
 
 PHOTON_BASE_URL = "https://photon.komoot.io"
 PHOTON_SEARCH_ENDPOINT = "/api"

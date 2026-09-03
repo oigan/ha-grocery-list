@@ -4,7 +4,7 @@ Integrare neoficială Home Assistant pentru liste de cumpărături Auchan.ro,
 prețuri și disponibilitate regională, adrese multiple, magazine apropiate,
 rețete și linkuri de coș.
 
-Versiune: **0.3.1** · Home Assistant: **2025.1+** · România
+Versiune: **0.4.0** · Home Assistant: **2025.1+** · România
 
 ## Ce oferă
 
@@ -52,8 +52,8 @@ copiezi nimic în `/config/www`: bundle-ul frontend este servit direct de
 integrare, din `custom_components/auchan_grocery/frontend`.
 
 > Cât timp repository-ul nu are un tag de release, HACS afișează ca versiune
-> hash-ul commit-ului, nu `0.3.1`. Integrarea funcționează normal; un tag
-> `v0.3.1` ar activa doar afișarea versiunii și notificările de update.
+> hash-ul commit-ului, nu `0.4.0`. Integrarea funcționează normal; un tag
+> `v0.4.0` ar activa doar afișarea versiunii și notificările de update.
 
 ## Pasul 3 — repornește Home Assistant
 

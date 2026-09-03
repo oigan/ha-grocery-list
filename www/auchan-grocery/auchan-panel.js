@@ -1,7 +1,7 @@
 /**
  * Auchan Grocery List — Lovelace Panel
  * LitElement Web Component · Auchan-inspired retail design
- * v0.3.1 — Chef AI with ChatGPT device login and category-aware products
+ * v0.4.0 — Aligned with the Auchan storefront design system
  */
 
 import { LitElement, html, css, nothing } from "lit";
