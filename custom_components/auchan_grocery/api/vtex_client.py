@@ -59,7 +59,7 @@ class VtexClient:
         self._headers = {
             "Accept": "application/json",
             "Content-Type": "application/json",
-            "User-Agent": "ha-auchan-grocery/0.4.0",
+            "User-Agent": "ha-auchan-grocery/0.4.1",
         }
         self._mutation_locks: defaultdict[str, asyncio.Lock] = defaultdict(asyncio.Lock)
 

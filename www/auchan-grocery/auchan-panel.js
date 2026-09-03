@@ -1,7 +1,7 @@
 /**
  * Auchan Grocery List — Lovelace Panel
  * LitElement Web Component · Auchan-inspired retail design
- * v0.4.0 — Aligned with the Auchan storefront design system
+ * v0.4.1 — Stock and price now refresh for every item, not only watched ones
  */
 
 import { LitElement, html, css, nothing } from "lit";

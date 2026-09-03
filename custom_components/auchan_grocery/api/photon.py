@@ -42,7 +42,7 @@ class PhotonClient:
         self._session = session
         self._headers = {
             "Accept": "application/json",
-            "User-Agent": "ha-auchan-grocery/0.4.0",
+            "User-Agent": "ha-auchan-grocery/0.4.1",
         }
         self._timeout = aiohttp.ClientTimeout(total=PHOTON_TIMEOUT)
 
