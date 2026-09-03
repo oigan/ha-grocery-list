@@ -13,7 +13,7 @@ from ..const import (
     NOMINATIM_BASE_URL,
     NOMINATIM_REVERSE_ENDPOINT,
     NOMINATIM_SEARCH_ENDPOINT,
-    NOMINATIM_USER_AGENT,
+    USER_AGENT,
     RO_LAT_MAX,
     RO_LAT_MIN,
     RO_LNG_MAX,
@@ -71,7 +71,7 @@ class NominatimClient:
     def __init__(self, session: aiohttp.ClientSession) -> None:
         self._session = session
         self._headers = {
-            "User-Agent": NOMINATIM_USER_AGENT,
+            "User-Agent": USER_AGENT,
             "Accept-Language": "ro",
         }
         self._timeout = aiohttp.ClientTimeout(total=NOMINATIM_TIMEOUT)

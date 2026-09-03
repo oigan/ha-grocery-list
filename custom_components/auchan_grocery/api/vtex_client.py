@@ -12,6 +12,7 @@ from typing import Any
 import aiohttp
 
 from ..const import (
+    USER_AGENT,
     AUCHAN_BASE_URL,
     HTTP_MAX_RETRIES,
     HTTP_RETRY_BACKOFF_BASE,
@@ -59,7 +60,7 @@ class VtexClient:
         self._headers = {
             "Accept": "application/json",
             "Content-Type": "application/json",
-            "User-Agent": "ha-auchan-grocery/0.4.1",
+            "User-Agent": USER_AGENT,
         }
         self._mutation_locks: defaultdict[str, asyncio.Lock] = defaultdict(asyncio.Lock)
 

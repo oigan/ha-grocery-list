@@ -9,6 +9,7 @@ from typing import Any
 import aiohttp
 
 from ..const import (
+    USER_AGENT,
     PHOTON_BASE_URL,
     PHOTON_REVERSE_ENDPOINT,
     PHOTON_SEARCH_ENDPOINT,
@@ -42,7 +43,7 @@ class PhotonClient:
         self._session = session
         self._headers = {
             "Accept": "application/json",
-            "User-Agent": "ha-auchan-grocery/0.4.1",
+            "User-Agent": USER_AGENT,
         }
         self._timeout = aiohttp.ClientTimeout(total=PHOTON_TIMEOUT)
 

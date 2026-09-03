@@ -6,6 +6,9 @@ DOMAIN = "auchan_grocery"
 NAME = "Auchan Grocery"
 VERSION = "0.4.1"
 
+# Sent by every outgoing client; derived so a version bump is one edit.
+USER_AGENT = f"ha-auchan-grocery/{VERSION}"
+
 # ── VTEX / Auchan endpoints ───────────────────────────────────────────────────
 AUCHAN_BASE_URL = "https://www.auchan.ro"
 VTEX_REGIONS_ENDPOINT = "/api/checkout/pub/regions"
@@ -48,7 +51,6 @@ DEFAULT_SALES_CHANNEL = "1"
 NOMINATIM_BASE_URL = "https://nominatim.openstreetmap.org"
 NOMINATIM_SEARCH_ENDPOINT = "/search"
 NOMINATIM_REVERSE_ENDPOINT = "/reverse"
-NOMINATIM_USER_AGENT = "ha-auchan-grocery/0.4.1"
 
 PHOTON_BASE_URL = "https://photon.komoot.io"
 PHOTON_SEARCH_ENDPOINT = "/api"

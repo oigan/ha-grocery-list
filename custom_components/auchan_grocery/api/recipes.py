@@ -23,6 +23,8 @@ from urllib.parse import urljoin, urlparse
 import aiohttp
 from bs4 import BeautifulSoup
 
+from ..const import USER_AGENT
+
 _LOGGER = logging.getLogger(__name__)
 
 RECIPES_CACHE_TTL = timedelta(hours=6)
@@ -1087,7 +1089,7 @@ class AuchanRecipeScraper:
         async with self._session.get(
             reader_url,
             headers={
-                "User-Agent": "ha-auchan-grocery/0.2.9",
+                "User-Agent": USER_AGENT,
                 "Accept": "text/markdown",
             },
             timeout=SCRAPER_TIMEOUT,
@@ -1106,7 +1108,7 @@ class AuchanRecipeScraper:
         async with self._session.get(
             reader_url,
             headers={
-                "User-Agent": "ha-auchan-grocery/0.2.9",
+                "User-Agent": USER_AGENT,
                 "Accept": "text/markdown",
             },
             timeout=THUMBNAIL_TIMEOUT,
